@@ -321,70 +321,71 @@ def ensure_app_dirs() -> None:
 def show_dhikr_toast(parent: tk.Misc, message: str) -> tk.Toplevel:
     toast = tk.Toplevel(parent)
     toast.overrideredirect(True)
-    toast.configure(bg="#172033")
+    toast.configure(bg="#0F172A")
     toast.attributes("-topmost", True)
     try:
         toast.attributes("-alpha", 0.0)
     except tk.TclError:
         pass
 
-    width = 390
-    frame = tk.Frame(toast, bg="#172033", highlightbackground="#818CF8", highlightthickness=1)
+    width = 318
+    frame = tk.Frame(toast, bg="#0F172A", highlightbackground="#334155", highlightthickness=1)
     frame.pack(fill=tk.BOTH, expand=True)
 
-    header = tk.Frame(frame, bg="#312E81")
+    header = tk.Frame(frame, bg="#111827")
     header.pack(fill=tk.X)
     tk.Label(
         header,
-        text="نقاء | تذكير",
-        bg="#312E81",
-        fg="#FFFFFF",
-        font=("Segoe UI", 10, "bold"),
+        text="نقاء",
+        bg="#111827",
+        fg="#C7D2FE",
+        font=("Segoe UI", 9, "bold"),
         anchor="e",
-        padx=10,
-        pady=6,
+        padx=9,
+        pady=4,
     ).pack(side=tk.RIGHT, fill=tk.X, expand=True)
     tk.Button(
         header,
         text="×",
         command=toast.destroy,
-        bg="#312E81",
-        fg="#FFFFFF",
-        activebackground="#4338CA",
-        activeforeground="#FFFFFF",
+        bg="#111827",
+        fg="#94A3B8",
+        activebackground="#1E293B",
+        activeforeground="#E2E8F0",
         relief=tk.FLAT,
         cursor="hand2",
-        width=3,
+        width=2,
+        font=("Segoe UI", 8, "bold"),
     ).pack(side=tk.LEFT)
 
     tk.Label(
         frame,
         text=message,
-        bg="#172033",
-        fg="#F9FAFB",
-        font=("Segoe UI", 11, "bold"),
+        bg="#0F172A",
+        fg="#E5E7EB",
+        font=("Segoe UI", 9, "bold"),
         justify=tk.RIGHT,
-        wraplength=width - 34,
-        padx=14,
-        pady=14,
+        wraplength=width - 28,
+        padx=12,
+        pady=10,
     ).pack(fill=tk.BOTH, expand=True)
 
     toast.update_idletasks()
-    height = max(124, toast.winfo_reqheight())
-    x = max(16, toast.winfo_screenwidth() - width - 24)
-    y = max(16, toast.winfo_screenheight() - height - 74)
+    height = max(86, toast.winfo_reqheight())
+    x = 22
+    y = 26
     toast.geometry(f"{width}x{height}+{x}+{y}")
 
     def fade(alpha: float, step: float) -> None:
         if not toast.winfo_exists():
             return
         next_alpha = alpha + step
-        if step > 0 and next_alpha >= 0.96:
+        if step > 0 and next_alpha >= 0.94:
             try:
-                toast.attributes("-alpha", 0.96)
+                toast.attributes("-alpha", 0.94)
             except tk.TclError:
                 pass
-            toast.after(10500, lambda: fade(0.96, -0.08))
+            toast.after(8500, lambda: fade(0.94, -0.08))
             return
         if step < 0 and next_alpha <= 0:
             toast.destroy()
@@ -395,7 +396,7 @@ def show_dhikr_toast(parent: tk.Misc, message: str) -> tk.Toplevel:
             pass
         toast.after(18, lambda: fade(next_alpha, step))
 
-    fade(0.0, 0.08)
+    fade(0.0, 0.07)
     return toast
 
 
