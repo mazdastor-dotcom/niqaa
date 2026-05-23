@@ -1,0 +1,26 @@
+build/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.spec
+.env
+.venv/
+venv/
+
+Niqaa_Data/
+Niqaa_Reports/
+Niqaa_Backups/
+NiqaaSpace_Data/
+NiqaaSpace_Reports/
+NiqaaSpace_Backups/
+RootUninstaller_Backups/
+RootUninstaller_Logs/
+
+Abu MaYYaS*
+RootUninstallerPortable.exe
+abu_mayyas_uninstaller.ico
+niqaa_space.ico
