@@ -76,6 +76,12 @@ python make_icon.py
 python -m PyInstaller --noconfirm --clean --onefile --windowed --uac-admin --icon ".\niqaa.ico" --name "نقاء" ".\root_uninstaller.py"
 ```
 
+لبناء نسخة أصغر حجمًا بدون حذف أي ميزة، استخدم UPX أثناء البناء:
+
+```powershell
+python -m PyInstaller --noconfirm --clean --onefile --windowed --uac-admin --upx-dir ".\tools\upx\upx-5.1.1-win64" --icon ".\niqaa.ico" --name "نقاء" ".\root_uninstaller.py"
+```
+
 الملف النهائي يظهر داخل:
 
 ```text
@@ -149,6 +155,12 @@ Build portable executable:
 
 ```powershell
 python -m PyInstaller --noconfirm --clean --onefile --windowed --uac-admin --icon ".\niqaa.ico" --name "نقاء" ".\root_uninstaller.py"
+```
+
+To build a smaller executable without removing features, use UPX during the PyInstaller build:
+
+```powershell
+python -m PyInstaller --noconfirm --clean --onefile --windowed --uac-admin --upx-dir ".\tools\upx\upx-5.1.1-win64" --icon ".\niqaa.ico" --name "نقاء" ".\root_uninstaller.py"
 ```
 
 Output:
